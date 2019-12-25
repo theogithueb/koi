@@ -14,14 +14,14 @@ int signum(int value) {
  */
 int scale (int value, int scaleTarget, int scaleOrigin) {
   if (abs(value) >= scaleOrigin) {
-    return scaleTarget;
+    return signum(value) * scaleTarget;
   }
   return signum(value) * map(abs(value), 0, scaleOrigin, 0, scaleTarget );
 }
 
 /*
- * returns the value if it is above the backlash, returns zero instead
+ * returns the value if its absolute value is above the backlash, returns zero instead
  */
 int backlash(int value, int backlash) {
-  return (value > backlash) ? value : 0; 
+  return (abs(value) > backlash) ? value : 0; 
 }

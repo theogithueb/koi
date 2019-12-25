@@ -20,8 +20,7 @@
 #define RIGHT_FORWARD_PIN  6
 #define RIGHT_BACKWARD_PIN 7
 
-void setup ()
-{
+void setup () {
   Serial.begin(9600);
   pinMode(JOYSTICK_X, INPUT);
   pinMode(JOYSTICK_Y, INPUT);
@@ -29,8 +28,7 @@ void setup ()
   Serial.println("Setup Finished");
 }
 
-void loop ()
-{
+void loop () {
   int xJoy = analogRead(JOYSTICK_X) - JOYSTICK_RANGE;
   int yJoy = analogRead(JOYSTICK_Y) - JOYSTICK_RANGE;
   int button = digitalRead(JOYSTICK_BUTTON);
@@ -56,16 +54,39 @@ void loop ()
       l = scale(l, MOTOR_MAXIMUM, maximum);
       r = scale(r, MOTOR_MAXIMUM, maximum);
     }
+    if (v > 0 && w > 0 || v > 0 && w < 0) {
+      l = l;
+      r = r;  
+    }
+    if (v < 0 && w < 0 || v < 0 && w > 0) {
+      int fooL = l;
+      int fooR = r;
+      l = fooR;
+      r = fooL;
+    }
+    
   } else {
     l = v;
     r = v;
   }
 
-  Serial.print("l: ");
-  Serial.print(l);
-
   
-  Serial.print("r: ");
+  Serial.print("x: ");
+  Serial.print(xTrimmed);
+  
+  Serial.print(" y: ");
+  Serial.print(yTrimmed);
+
+  Serial.print(" v: ");
+  Serial.print(v);
+  
+  Serial.print(" w: ");
+  Serial.print(w);
+
+  Serial.print(" l: ");
+  Serial.print(l);
+  
+  Serial.print(" r: ");
   Serial.print(r);
 
   Serial.println();
