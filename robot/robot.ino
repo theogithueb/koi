@@ -1,4 +1,3 @@
-
 /*
    controll the robot with an joystick attached direkt to the robot.
 */
@@ -49,14 +48,27 @@ void loop ()
   int l = 0;
   int r = 0;
 
-  if (abs(w) > 10) {
-    int maximum = abs(v) + abs(w);
-    l = scale(l, MOTOR_MAXIMUM, maximum);
-    r = scale(r, MOTOR_MAXIMUM, maximum);
+  if (abs(w) > 5) {
+    l = v - w;
+    r = v + w;
+    int maximum = max(abs(l),abs(r));
+    if (maximum > MOTOR_MAXIMUM) {
+      l = scale(l, MOTOR_MAXIMUM, maximum);
+      r = scale(r, MOTOR_MAXIMUM, maximum);
+    }
   } else {
     l = v;
     r = v;
   }
+
+  Serial.print("l: ");
+  Serial.print(l);
+
+  
+  Serial.print("r: ");
+  Serial.print(r);
+
+  Serial.println();
 
   turnWheel(LEFT_PWM_PIN,  LEFT_FORWARD_PIN,  LEFT_BACKWARD_PIN,  l);
   turnWheel(RIGHT_PWM_PIN, RIGHT_FORWARD_PIN, RIGHT_BACKWARD_PIN, r);
