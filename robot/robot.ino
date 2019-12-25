@@ -8,17 +8,17 @@
 #define JOYSTICK_RANGE     512
 #define MOTOR_MAXIMUM      255
 
-#define JOYSTICK_X         A0
-#define JOYSTICK_Y         A1
-#define JOYSTICK_BUTTON    13
+#define JOYSTICK_X         A0 //A0
+#define JOYSTICK_Y         A1 //A1
+#define JOYSTICK_BUTTON    13 //D13
 
-#define LEFT_PWM_PIN       9
-#define LEFT_FORWARD_PIN   4
-#define LEFT_BACKWARD_PIN  5
+#define LEFT_PWM_PIN       9  //D9
+#define LEFT_FORWARD_PIN   4  //D4
+#define LEFT_BACKWARD_PIN  5  //D5
 
-#define RIGHT_PWM_PIN      10
-#define RIGHT_FORWARD_PIN  6
-#define RIGHT_BACKWARD_PIN 7
+#define RIGHT_PWM_PIN      10 //D10
+#define RIGHT_FORWARD_PIN  6  //D6
+#define RIGHT_BACKWARD_PIN 7  //D7
 
 void setup () {
   Serial.begin(9600);
