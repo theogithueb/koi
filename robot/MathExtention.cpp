@@ -10,10 +10,18 @@ int signum(int value) {
 
 /*
  * scales values between -512 to 512 to a range of -255 to 255
+ * return the scaleTarget if value is greater or equal to scaleOrigin
  */
-int scale (int value) {
-  if (abs(value) > 512) {
-    return 255;
+int scale (int value, int scaleTarget, int scaleOrigin) {
+  if (abs(value) >= scaleOrigin) {
+    return scaleTarget;
   }
-  return signum(value) * map(abs(value), 0, 512, 0, 255 );
+  return signum(value) * map(abs(value), 0, scaleOrigin, 0, scaleTarget );
+}
+
+/*
+ * returns the value if it is above the backlash, returns zero instead
+ */
+int backlash(int value, int backlash) {
+  return (value > backlash) ? value : 0; 
 }
