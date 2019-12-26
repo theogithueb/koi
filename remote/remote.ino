@@ -4,6 +4,9 @@
 
 #include "MathExtention.h"
 #include "WirelessCommunication.h"
+#include <SPI.h>
+#include <nRF24L01.h>
+#include <RF24.h>
 #define JOYSTICK_TOTAL     1024
 #define JOYSTICK_RANGE     512
 #define MOTOR_MAXIMUM      255
@@ -12,12 +15,20 @@
 #define JOYSTICK_Y         A1 //A1
 #define JOYSTICK_BUTTON    13 //D13
 
+RF24 radio(7, 8); // CE, CSN
+const byte address[6] = "00001";
 
 void setup () {
   Serial.begin(9600);
   pinMode(JOYSTICK_X, INPUT);
   pinMode(JOYSTICK_Y, INPUT);
   digitalWrite(JOYSTICK_BUTTON, HIGH);
+
+  radio.begin();
+  radio.openWritingPipe(address);
+  radio.setPALevel(RF24_PA_MIN);
+  radio.stopListening();
+  
   Serial.println("Setup Finished");
 }
 
