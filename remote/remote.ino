@@ -1,4 +1,4 @@
-/*
+</*
    controll the robot with an joystick attached direkt to the robot.
 */
 
@@ -12,10 +12,10 @@
 #define MOTOR_MAXIMUM      255
 
 #define JOYSTICK_X         A0 //A0
-#define JOYSTICK_Y         A1 //A1
-#define JOYSTICK_BUTTON    13 //D13
+#define JOYSTICK_Y         A1 //A
 
 RF24 radio(7, 8); // CE, CSN
+
 const byte address[6] = "00001";
 
 void setup () {
@@ -48,7 +48,7 @@ void loop () {
   int w = -yTrimmed;
 
   deliver(v,w);
-  Serial.println("Delivered");
+ 
   Serial.print("x: ");
   Serial.print(xTrimmed);
   

@@ -18,7 +18,7 @@
 
 #define RIGHT_PWM_PIN      10 //D10
 #define RIGHT_FORWARD_PIN  6  //D6
-#define RIGHT_BACKWARD_PIN 7  //D7
+#define RIGHT_BACKWARD_PIN 3  //D3
 
 RF24 radio(7, 8); // CE, CSN
 

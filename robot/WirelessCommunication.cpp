@@ -4,9 +4,10 @@
 #include <nRF24L01.h>
 #include <RF24.h>
 
-RF24 radio(7, 8); // CE, CSN
+
 
 int recieve(int i){
+  RF24 radio(7, 8);
   int numbers[2];
   numbers[1]=0;
   numbers[2]=0;
@@ -19,6 +20,7 @@ int recieve(int i){
   return numbers[i];
 }
 void deliver(int v,int w) {
+  RF24 radio(7, 8);
   int numbers[2];
   numbers[1]=v;
   numbers[2]=w;

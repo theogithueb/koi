@@ -7,7 +7,6 @@ ENB --> D10
 
 VRx --> A0
 VRy --> A1
-SW  -->	D13
 
 -----------------------------
 
@@ -15,6 +14,18 @@ Linke Reihe: OUT1+OUT2
 Rechte Reihe OUT3+OUT4
 
 -----------------------------
+
 Spannungswandler:
 OUT+ --> VIN
 OUT- --> GND
+
+-----------------------------
+
+Wireless Modul:
+V+   --> 3.3V
+GND  --> GND
+CSN  --> D8
+CE   --> D7
+SCK  --> D13
+MOSI --> D11
+MISO --> D12
